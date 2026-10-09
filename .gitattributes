@@ -1,0 +1,6 @@
+# Lineariza quebras de linha no checkout/commit
+* text=auto
+
+# Scripts do Windows/Linux mantidos com o fim de linha correto
+*.bat text eol=crlf
+*.sh  text eol=lf

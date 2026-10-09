@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Banco do rank mundial (se apontado para dentro do repo via XADREZ_DB)
+*.db
+*.db-journal
+
+# Logs e cobertura
+*.log
+.coverage
+htmlcov/
+
+# Ambiente e editores
+.env
+.idea/
+.vscode/
+
+# SO
+.DS_Store
+Thumbs.db
