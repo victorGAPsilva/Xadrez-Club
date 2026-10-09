@@ -1,0 +1,4 @@
+# Dependências do backend web (testado em Python 3.10+ / 3.12)
+# Uvicorn "puro" (sem [standard]) evita compilar httptools/uvloop no Windows.
+fastapi>=0.110
+uvicorn>=0.27
