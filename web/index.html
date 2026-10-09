@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xadrez — Edição de Clube</title>
+<meta name="description" content="Xadrez com IA em 3 níveis e multiplayer online. Direção de arte: papel, madeira e latão.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>XADREZ</h1>
+    <span class="subtitle">EDIÇÃO DE CLUBE</span>
+  </div>
+  <div class="status">
+    <span class="swatch" id="swatch"></span>
+    <span id="statusText">Vez das Brancas</span>
+  </div>
+</header>
+
+<main>
+  <section class="board-col">
+    <div class="board-frame">
+      <div class="board" id="board">
+        <div class="squares" id="squares"></div>
+        <div class="highlights" id="highlights"></div>
+        <div class="pieces" id="pieces"></div>
+        <div class="labels" id="labels"></div>
+      </div>
+      <div class="overlay" id="overlay" hidden>
+        <div class="overlay-card">
+          <div class="overlay-label">FIM DE PARTIDA</div>
+          <div class="overlay-title" id="overlayTitle"></div>
+          <div class="overlay-hint" id="overlayHint">Pressione N para novo jogo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <div class="section">
+      <div class="section-title">MODO</div>
+      <div class="segmented" id="modes">
+        <button data-mode="ai" class="active">CONTRA A IA</button>
+        <button data-mode="online">ONLINE</button>
+      </div>
+    </div>
+
+    <!-- ---------------------------- Modo IA ---------------------------- -->
+    <div id="aiPanel">
+      <div class="section">
+        <div class="section-title">OPONENTE</div>
+        <div class="segmented" id="levels">
+          <button data-level="easy">FÁCIL</button>
+          <button data-level="medium" class="active">MÉDIO</button>
+          <button data-level="hard">DIFÍCIL</button>
+        </div>
+      </div>
+      <div class="colors">
+        <span class="colors-label">JOGAR DE</span>
+        <div class="segmented small" id="colors">
+          <button data-color="w" class="active">BRANCAS</button>
+          <button data-color="b">PRETAS</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- --------------------------- Modo online -------------------------- -->
+    <div id="onlinePanel" hidden>
+      <div class="section">
+        <div class="section-title">SALA</div>
+
+        <div id="lobby">
+          <button id="createBtn" class="wide">CRIAR SALA</button>
+          <div class="join-row">
+            <input id="joinInput" maxlength="4" placeholder="CÓDIGO" autocomplete="off" spellcheck="false">
+            <button id="joinBtn">ENTRAR</button>
+          </div>
+          <button id="queueBtn" class="wide ghost">JOGAR AGORA (fila)</button>
+        </div>
+
+        <div id="room" hidden>
+          <div class="room-line">sala <b id="roomCode">----</b>
+            <button id="copyBtn" class="link">copiar link</button></div>
+          <div class="room-line" id="roomPlayers"></div>
+          <div class="room-line muted" id="roomStatus"></div>
+          <button id="leaveBtn" class="wide ghost">SAIR DA SALA</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-main" id="turnMain">VEZ DAS BRANCAS</div>
+      <div class="card-sub" id="turnSub">seu lance</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">NOTAÇÃO</div>
+      <div class="moves-head"><span>Nº</span><span>BRANCAS</span><span>PRETAS</span></div>
+      <div class="moves" id="moves"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">CAPTURADAS</div>
+      <div class="caps" id="caps"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">RANKING MUNDIAL</div>
+        <button id="rankRefresh" class="link">atualizar</button>
+      </div>
+      <div class="rank-me" id="rankMe">Entre no online para pontuar.</div>
+      <div class="rank" id="rankList"></div>
+    </div>
+
+    <div class="section" id="chatSection" hidden>
+      <div class="section-title">CONVERSA</div>
+      <div class="chat" id="chat"></div>
+      <div class="chat-row">
+        <input id="chatInput" maxlength="200" placeholder="diga algo…" autocomplete="off">
+        <button id="chatSend">ENVIAR</button>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="newBtn">NOVO JOGO</button>
+      <button id="undoBtn">DESFAZER</button>
+      <button id="rematchBtn" hidden>REVANCHE</button>
+    </div>
+
+    <div class="conn" id="conn">conectado</div>
+  </aside>
+</main>
+
+<script src="config.js"></script>
+<script src="net.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
